@@ -1,5 +1,4 @@
 program principal;
-var nomEpreuve : String;
 
 procedure affichageTexte (nomEpreuve : string);
 var fichier : Text;
@@ -9,16 +8,15 @@ begin
   nomFichier := nomEpreuve +'.txt';
   assign (fichier, nomFichier );
   reset (fichier);
-  while not (eof (fichier)) do
+  while not Eof(fichier) do
     begin
-      read (fichier, mot);
+      readln (fichier, mot);
       write (mot);
     end;
-  close (fichier);
+  close(fichier);
 
 end;
 
 begin
-  nomEpreuve := 'aa';
-  affichageTexte (nomEpreuve);
+
 end.
