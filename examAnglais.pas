@@ -1,22 +1,22 @@
 procedure lectureFichierAng( var mot, traduction : String );
 var fichier : Text;
-    i, j : Integer;
+    i, j, k : Integer;
 begin
 randomize;
-j := 1;
-i := random(9) + 1;
+i := random(5) + 1;
+k := (2*i)-2;
 assign ( fichier, 'anglais.pas' );
 reset ( fichier );
-for j := 1 to i-1 do
-  readln ();
-read( fichier, mot);
-read( fichier, traduction);
+for j := 1 to k do
+    readln(fichier);
+readln( fichier, mot);
+readln( fichier, traduction);
 close( fichier);
 end;
 
 procedure choixJoueurAng( mot : string; var proposition : String);
 begin
-write( mot, ' : ' );
+write( mot, ' : ' );0
 read( proposition);
 end;
 
@@ -30,7 +30,7 @@ end;
 procedure examAnglais( var gagneAngl : Integer );
 var mot, traduction, proposition : String;
 begin
-gagneAngl := 0
+gagneAngl := 0;
 affichageTexte( 'examAnglais' );
 lectureFichierAng( mot, traduction);
 choixJoueurAng( mot, proposition);

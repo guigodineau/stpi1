@@ -12,9 +12,9 @@ begin
     begin
       readln (fichier, mot);
       write (mot);
+      writeln();
     end;
   close(fichier);
-
 end;
 
 begin
