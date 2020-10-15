@@ -27,11 +27,13 @@ if proposition = traduction then
   estJusteAngl := true;
 end;
 
-procedure examAnglais( var gagneAngl : boolean );
+procedure examAnglais( var gagneAngl : Integer );
 var mot, traduction, proposition : String;
 begin
+gagneAngl := 0
 affichageTexte( 'examAnglais' );
 lectureFichierAng( mot, traduction);
 choixJoueurAng( mot, proposition);
-gagneAngl := (estJusteAngl( proposition, traduction ));
+if (estJusteAngl( proposition, traduction )) then
+  gagneAngl := 1
 end;
