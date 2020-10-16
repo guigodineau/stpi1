@@ -1,15 +1,14 @@
-program chifoumi;
-
+procedure chifoumi();
 Var i : Real;
     choixOrdi, choixJoueur : String;
-    victoire : boolean;
+    resChifoumi : boolean;
 
 begin
 randomize;
-writeln('alors que vous sortez tranquillement de l''INSA, un jeune sanglier sauvage vous propose un duel de chifoumi');
+affichageTexte( 'chifoumi' );
 
 repeat
-victoire:=false;
+resChifoumi:=false;
 choixOrdi:='pierre';
 i := random(3);
 
@@ -26,11 +25,10 @@ until (choixJoueur='pierre') or (choixJoueur='feuille') or (choixJoueur='ciseau'
 writeln('le sanglier: ',choixOrdi);
 
 if (choixJoueur='pierre') and (choixOrdi='ciseau') or (choixJoueur='feuille') and (choixOrdi='pierre') or (choixJoueur='ciseau') and (choixOrdi='feuille') then
-  victoire:=true;
+  resChifoumi:=true;
 
 until choixOrdi<>choixJoueur;
 
-if victoire then
-  writeln('vous avez gagne, le sanglier vous laisse passer!')
-  else writeln('dommage vous avez perdu');
-end.
+if not(resChifoumi) then
+   affichageTexte( 'MortChifoumi' );
+end;
