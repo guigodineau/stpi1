@@ -3,7 +3,7 @@ unit miniJeux;
 interface
 
 procedure affichageTexte (nomEpreuve : string);
-procedure chifoumi();
+procedure chifoumi( resChifoumi : boolean );
 procedure lectureFichier( epreuve : string; var question, reponse : String );
 procedure choixJoueur( question : string; var proposition : String);
 function estJuste( proposition, reponse : string ) : Boolean;
@@ -32,10 +32,10 @@ begin
 end;
 
 {renvoi vrai si le joueur gagne la partie de chifoumi}
-procedure chifoumi();
+procedure chifoumi( resChifoumi : boolean );
 Var i : Real;
     choixOrdi, choixJoueur : String;
-    resChifoumi : boolean;
+
 begin
   randomize;
   affichageTexte( 'chifoumi' );
