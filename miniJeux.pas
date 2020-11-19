@@ -3,7 +3,7 @@ unit miniJeux;
 interface
 
 procedure affichageTexte (nomEpreuve : string);
-procedure chifoumi();
+procedure chifoumi( var resChifoumi : boolean );
 procedure lectureFichier( epreuve : string; var question, reponse : String );
 procedure choixJoueur( question : string; var proposition : String);
 function estJuste( proposition, reponse : string ) : Boolean;
@@ -32,10 +32,10 @@ begin
 end;
 
 {renvoi vrai si le joueur gagne la partie de chifoumi}
-procedure chifoumi();
+procedure chifoumi( var resChifoumi : boolean );
 Var i : Real;
     choixOrdi, choixJoueur : String;
-    resChifoumi : boolean;
+
 begin
   randomize;
   affichageTexte( 'chifoumi' );
@@ -53,7 +53,7 @@ begin
       readln(choixJoueur);
     until (choixJoueur='pierre') or (choixJoueur='feuille') or (choixJoueur='ciseau');
     writeln('le sanglier: ',choixOrdi);
-    if (choixJoueur='pierre') and (choixOrdi='ciseau') or (choixJoueur='feuille') and (choixOrdi='pierre') or (choixJoueur='ciseau') and (choixOrdi='feuille') then
+    if ((choixJoueur='pierre') and (choixOrdi='ciseau')) or ((choixJoueur='feuille') and (choixOrdi='pierre')) or ((choixJoueur='ciseau') and (choixOrdi='feuille')) then
       resChifoumi:=true;
   until choixOrdi<>choixJoueur;
   if not(resChifoumi) then
@@ -80,8 +80,8 @@ end;
 {écrit la question et renvoit la réponse du joueur}
 procedure choixJoueur( question : string; var proposition : String);
 begin
-  write( question, ' : ' );
-  read( proposition);
+  writeln( question, ' : ' );
+  readln( proposition);
 end;
 
 {revoit vrai si la la proposition du joueur correspond a la réponse}
@@ -97,7 +97,7 @@ procedure examAnglais( var gagneAngl : Integer );
 var epreuve, question, reponse, proposition : String;
 begin
   gagneAngl := 0;
-  epreuve := 'anglais.pas';
+  epreuve := 'anglais.txt';
   affichageTexte( 'examAnglais' );
   lectureFichier( epreuve, question, reponse);
   choixJoueur( question, proposition);
@@ -110,7 +110,7 @@ procedure examMaths( var gagneMaths : Integer );
 var epreuve, question, reponse, proposition : String;
 begin
   gagneMaths := 0;
-  epreuve := 'maths.pas';
+  epreuve := 'maths.txt';
   affichageTexte( 'ExamMaths' );
   lectureFichier( epreuve, question, reponse);
   choixJoueur( question, proposition);
@@ -123,7 +123,7 @@ procedure enigme( var gagneEnigme : Integer );
 var epreuve, question, reponse, proposition : String;
 begin
   gagneEnigme := 0;
-  epreuve := 'enigme.pas';
+  epreuve := 'enigme.txt';
   affichageTexte( 'ExamEnigme' );
   lectureFichier( epreuve, question, reponse);
   choixJoueur( question, proposition);
