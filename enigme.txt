@@ -1,0 +1,10 @@
+Avant que l'on découvre l'Everest quel était le plus haut sommet du monde? ( 1: Le Mont-Blanc, 2: L'Everest, 3: Le Kilimanjaro)
+2
+Quel est le record du monde du 100m? (1: 9.58, 2: 9.53, 3: 9.63, 4: La réponse 4)
+1
+Quel est le poids moyen d'un oeuf de poule? (1: 40g, 2: 50g, 3: 60g, 4:70g)
+3
+Quelle est la hauteur du Mont-Blanc? (1: 8848m, 2: 5895m, 3: 4809m, 4: La réponse 4)
+3
+Quelle est la vitesse de l'avion le plus rapide du monde, le SR-71? (1: 7273km/h, 2:3529km/h, 3: 3786km/h, 4: 50km/h en ville)
+2

@@ -1,0 +1,10 @@
+Donner la valeur de 2^8
+256
+Est ce que le produit d'un module est le module des produits? (oui ou non)
+oui
+Donner la valeur de !5
+120
+Donner la valeur de 11*11
+121
+Est-ce que 29 est un nombre premier? (oui ou non)
+oui
