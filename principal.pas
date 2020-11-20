@@ -1,9 +1,10 @@
 program principal;
 uses miniJeux;
+const Max = 3;
 var evenement : Integer;
     reussite : Boolean;
-    scenario : array[1..4] of Integer;
-    i : Integer;
+    scenario : array[0..Max] of Integer;
+    i, j : Integer;
 
 procedure initialisation( var scenario : array of integer );
 var fichier : Text;
@@ -11,13 +12,16 @@ var fichier : Text;
 begin
 assign ( fichier, 'histoire.txt' );
 reset ( fichier );
-for j := 1 to 4 do
-readln( fichier, s);
-scenario [j] := s;
+for j := 0 to 3 do
+  begin
+    readln( fichier, s);
+    scenario[j] := s;
+    writeln(scenario[j]);
+  end;
 close( fichier);
 end;
 
-procedure scoreExamA( var resultatA,numEpRatee:integer);
+procedure scoreExamA( var resultatA, numEpRatee:integer);
 var gagneAngl,gagneMaths,gagneEnigme : integer;
 begin
 examAnglais( gagneAngl );
@@ -35,8 +39,8 @@ enigme( gagneEnigme );
 			numEpRatee:=2;
 			if (gagneEnigme=0) then
 			numEpRatee:=3;
-		end;
-		writeln('Vous allez aux trappages');
+		  writeln('Vous allez aux trappages');
+    end;
 		if (resultatA=1) or (resultatA=0) then
 		writeln('Dommage');
 end;
@@ -145,9 +149,10 @@ end;
 
 begin
 initialisation( scenario );
-i := 1;
+write(scenario[0]);
+j := 0;
+i := scenario[j];
 affichageTexte( 'EntreeInsa' );
-write('ca marche');
 repeat
   reussite := false;
   evenement := i;
@@ -157,9 +162,10 @@ repeat
     3 : inattendu( reussite );
     4 : DSB( reussite );
   end;
-  if reussite=true then i:=(i+1)
-  else i:=0
-until (i=0) or (i=5);
-write('ca sort de la boucle');
-if i=5 then affichageTexte('FinJeu');
+  if reussite=true then j:= j+1
+  else j:=0;
+  i:= scenario[j];
+  write(i);
+until (j=0) or (j=5);
+if j=5 then affichageTexte('FinJeu');
 end.
