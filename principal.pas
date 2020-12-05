@@ -16,7 +16,6 @@ for j := 0 to 3 do
   begin
     readln( fichier, s);
     scenario[j] := s;
-    writeln(scenario[j]);
   end;
 close( fichier);
 end;
@@ -29,6 +28,7 @@ examMaths( gagneMaths );
 enigme( gagneEnigme );
 	resultatA:=0;
 	resultatA:=gagneAngl+gagneMaths+gagneEnigme;
+  writeln(resultatA);
 		if resultatA=3 then
 		writeln('Vous avez reussit les DS1');
 		if resultatA=2 then
@@ -46,38 +46,16 @@ enigme( gagneEnigme );
 end;
 
 procedure rattrapageA(numEpRatee:Integer; var validationA:Boolean);
-var epreuve, question, reponse, proposition : String;
+var gagne : Integer;
 begin
-	if (numEpRatee=1) then
-	begin
-		validationA := false;
-		epreuve := 'anglais.pas';
-		affichageTexte( 'examAnglais' );
-		lectureFichier( epreuve, question, reponse);
-		choixJoueur( question, proposition);
-		if (estJuste( proposition, reponse )) then
-		validationA := true;
-	end;
-	if (numEpRatee=2) then
-	begin
-		validationA := false;
-		epreuve := 'maths.pas';
-		affichageTexte( 'ExamMaths' );
-		lectureFichier( epreuve, question, reponse);
-		choixJoueur( question, proposition);
-		if (estJuste( proposition, reponse )) then
-		validationA := true;
-	end;
-	if (numEpRatee=3) then
-	begin
-		validationA := false;
-		epreuve := 'enigme.pas';
-		affichageTexte( 'ExamEnigme' );
-		lectureFichier( epreuve, question, reponse);
-		choixJoueur( question, proposition);
-		if (estJuste( proposition, reponse )) then
-		validationA := true;
-	end;
+  ValidationA := false;
+  case numEpRatee of
+    1 : examAnglais(gagne);
+    2 : examMaths( gagne );
+    3 : enigme( gagne );
+  end;
+  if gagne = 1 then
+  ValidationA := true;
 end;
 
 procedure afficherFiche();
@@ -121,7 +99,7 @@ readln( reponse );
 if reponse = 'oui' then validation := true;
 end;
 
-procedure DSA( reussite : boolean );
+procedure DSA(var reussite : boolean );
 var resultat, numEpRatee : Integer;
     validationA : boolean;
 begin
@@ -130,12 +108,12 @@ begin
   affichageTexte( 'DSA' );
   reussite := false;
   scoreExamA( resultat, numEpRatee );
-  if resultat = 3 then reussite:=true
+  if resultat = 3 then reussite := true
   else if resultat = 2 then rattrapageA( numEpRatee, validationA );
   if validationA then reussite := true;
 end;
 
-procedure DSB( reussite : boolean );
+procedure DSB(var reussite : boolean );
 var resultat, validation : boolean;
 begin
   validation := false;
@@ -165,7 +143,6 @@ repeat
   if reussite=true then j:= j+1
   else j:=0;
   i:= scenario[j];
-  write(i);
-until (j=0) or (j=5);
-if j=5 then affichageTexte('FinJeu');
+until (j=0) or (j=4);
+if j=4 then affichageTexte('FinJeu');
 end.
