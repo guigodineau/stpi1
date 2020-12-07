@@ -14,6 +14,8 @@ procedure inattendu( var gagneC : Boolean );
 
 implementation
 
+uses crt;
+
 {affiche le texte du fichier texte demandé}
 procedure affichageTexte (nomEpreuve : string);
 var fichier : Text;
@@ -29,6 +31,7 @@ begin
       writeln();
     end;
   close(fichier);
+  writeln();
 end;
 
 {renvoi vrai si le joueur gagne la partie de chifoumi}
@@ -57,7 +60,10 @@ begin
       resChifoumi:=true;
   until choixOrdi<>choixJoueur;
   if not(resChifoumi) then
-    affichageTexte( 'MortChifoumi' );
+    begin
+      clrscr;
+      affichageTexte( 'MortChifoumi' );
+    end;
 end;
 
 {lit et renvoit une question et une réponse à partir du fichier texte de l'epreuve}
@@ -80,7 +86,7 @@ end;
 {écrit la question et renvoit la réponse du joueur}
 procedure choixJoueur( question : string; var proposition : String);
 begin
-  writeln( question, ' : ' );
+  write( question, ' : ' );
   readln( proposition);
 end;
 
@@ -136,10 +142,12 @@ procedure inattendu( var gagneC : Boolean );
 var d : Integer;
 begin
   randomize();
+  clrscr;
   affichageTexte('Inattendu');
   gagneC := false;
   d := random(6)+1;
   writeln('le numero de ton de est : ', d);
+  writeln();
   if (d mod 2) = 0 then
     gagneC := true;
   if gagneC = false then

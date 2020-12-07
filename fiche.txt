@@ -1,4 +1,5 @@
-		FICHE DE P1
+FICHE DE P1 :
+
 Forme différentielle du premier principe: dQ=dU+dW
 dU=-PdV+TdS
 Energie libre : F=U-TS
