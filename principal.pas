@@ -1,5 +1,5 @@
 program principal;
-uses miniJeux;
+uses miniJeux, crt;
 const Max = 3;
 var evenement : Integer;
     reussite : Boolean;
@@ -24,13 +24,15 @@ procedure scoreExamA( var resultatA, numEpRatee:integer);
 var gagneAngl,gagneMaths,gagneEnigme : integer;
 begin
 examAnglais( gagneAngl );
+clrscr;
 examMaths( gagneMaths );
+clrscr;
 enigme( gagneEnigme );
+clrscr;
 	resultatA:=0;
 	resultatA:=gagneAngl+gagneMaths+gagneEnigme;
-  writeln(resultatA);
 		if resultatA=3 then
-		writeln('Vous avez reussit les DS1');
+		  writeln('Vous avez reussit les DS1');
 		if resultatA=2 then
 		begin
 			if (gagneAngl=0) then
@@ -48,6 +50,8 @@ end;
 procedure rattrapageA(numEpRatee:Integer; var validationA:Boolean);
 var gagne : Integer;
 begin
+  clrscr;
+  affichageTexte( 'rattrapageA' );
   ValidationA := false;
   case numEpRatee of
     1 : examAnglais(gagne);
@@ -91,9 +95,11 @@ questionReponse( estJuste );
 if estJuste then resultat := true;
 end;
 
-procedure rattrapageB( validation : Boolean );
+procedure rattrapageB( var validation : Boolean );
 var reponse : string;
 begin
+clrscr;
+affichageTexte( 'rattrapageB' );
 writeln( 'Voulez vous passer en deuxieme annee?' );
 readln( reponse );
 if reponse = 'oui' then validation := true;
@@ -103,10 +109,11 @@ procedure DSA(var reussite : boolean );
 var resultat, numEpRatee : Integer;
     validationA : boolean;
 begin
+  clrscr;
+  reussite := false;
   resultat := 0;
   numEpRatee := 0;
   affichageTexte( 'DSA' );
-  reussite := false;
   scoreExamA( resultat, numEpRatee );
   if resultat = 3 then reussite := true
   else if resultat = 2 then rattrapageA( numEpRatee, validationA );
@@ -123,11 +130,12 @@ begin
   if resultat = true then reussite:=true
     else rattrapageB( validation );
   if validation then reussite := true;
+  clrscr;
 end;
 
 begin
+clrscr;
 initialisation( scenario );
-write(scenario[0]);
 j := 0;
 i := scenario[j];
 affichageTexte( 'EntreeInsa' );
