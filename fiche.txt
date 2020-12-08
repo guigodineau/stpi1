@@ -1,6 +1,6 @@
 FICHE DE P1 :
 
-Forme différentielle du premier principe: dQ=dU+dW
+Forme differentielle du premier principe: dQ=dU+dW
 dU=-PdV+TdS
 Energie libre : F=U-TS
 Enthalpie: H=U+PV
