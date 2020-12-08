@@ -49,14 +49,14 @@ begin
     if i=1 then
       choixOrdi:='feuille'
       else if i=2 then
-        choixOrdi:='ciseau';
+        choixOrdi:='ciseaux';
     repeat
-      writeln('pierre, feuille ou ciseau?');
+      writeln('pierre, feuille ou ciseaux?');
       write('vous: ');
       readln(choixJoueur);
-    until (choixJoueur='pierre') or (choixJoueur='feuille') or (choixJoueur='ciseau');
+    until (choixJoueur='pierre') or (choixJoueur='feuille') or (choixJoueur='ciseaux');
     writeln('le sanglier: ',choixOrdi);
-    if ((choixJoueur='pierre') and (choixOrdi='ciseau')) or ((choixJoueur='feuille') and (choixOrdi='pierre')) or ((choixJoueur='ciseau') and (choixOrdi='feuille')) then
+    if ((choixJoueur='pierre') and (choixOrdi='ciseaux')) or ((choixJoueur='feuille') and (choixOrdi='pierre')) or ((choixJoueur='ciseaux') and (choixOrdi='feuille')) then
       resChifoumi:=true;
   until choixOrdi<>choixJoueur;
   if not(resChifoumi) then

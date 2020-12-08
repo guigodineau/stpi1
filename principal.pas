@@ -43,8 +43,6 @@ clrscr;
 			numEpRatee:=3;
 		  writeln('Vous allez aux trappages');
     end;
-		if (resultatA=1) or (resultatA=0) then
-		writeln('Dommage');
 end;
 
 procedure rattrapageA(numEpRatee:Integer; var validationA:Boolean);
@@ -59,7 +57,7 @@ begin
     3 : enigme( gagne );
   end;
   if gagne = 1 then
-  ValidationA := true;
+  ValidationA := true
 end;
 
 procedure afficherFiche();
@@ -81,7 +79,7 @@ procedure questionReponse(var estJuste : Boolean);
 var reponse : string;
 begin
   estJuste := false;
-  writeln( 'Donner la definition de la fonction d''etat enthalpie? (Ecrire sans espaces)' );
+  writeln( 'Donner la definition de la fonction d''etat enthalpie (Ecrire sans espaces)' );
   readln( reponse );
   if reponse = 'H=U+PV' then estJuste := true;
 end;
@@ -118,6 +116,11 @@ begin
   if resultat = 3 then reussite := true
   else if resultat = 2 then rattrapageA( numEpRatee, validationA );
   if validationA then reussite := true;
+  if reussite = false then
+    begin
+      clrscr;
+      affichageTexte('DSAEchec');
+    end;
 end;
 
 procedure DSB(var reussite : boolean );
