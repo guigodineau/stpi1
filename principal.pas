@@ -1,16 +1,22 @@
 program principal;
-uses miniJeux, crt;
+uses miniJeux, keyboard, crt;
 const Max = 3;
 var evenement : Integer;
     reussite : Boolean;
     scenario : array[0..Max] of Integer;
     i, j : Integer;
+    a : char;
 
 procedure initialisation( var scenario : array of integer );
 var fichier : Text;
-    j, s : integer;
+    nomHistoire, nb : string;
+    j, s, i : integer;
 begin
-assign ( fichier, 'histoire.txt' );
+randomize;
+i:=random(2)+1;
+Str(i, nb);
+nomHistoire:='histoire'+nb+'.txt';
+assign ( fichier, nomHistoire);
 reset ( fichier );
 for j := 0 to 3 do
   begin
@@ -72,6 +78,7 @@ begin
       write (mot);
       writeln();
     end;
+  writeln();
   close(fichier);
 end;
 
@@ -126,6 +133,7 @@ end;
 procedure DSB(var reussite : boolean );
 var resultat, validation : boolean;
 begin
+  clrscr;
   validation := false;
   affichageTexte( 'DSB' );
   reussite := false;
@@ -142,6 +150,9 @@ initialisation( scenario );
 j := 0;
 i := scenario[j];
 affichageTexte( 'EntreeInsa' );
+writeln('appuyer entrer pour continuer');
+readln(a);
+
 repeat
   reussite := false;
   evenement := i;

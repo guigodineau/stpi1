@@ -41,6 +41,7 @@ Var i : Real;
 
 begin
   randomize;
+  clrscr;
   affichageTexte( 'chifoumi' );
   repeat
     resChifoumi:=false;
@@ -140,6 +141,7 @@ end;
 {revoi vrai si le joueur fait un chiffre pair au lancer de de}
 procedure inattendu( var gagneC : Boolean );
 var d : Integer;
+    a : char;
 begin
   randomize();
   clrscr;
@@ -150,8 +152,12 @@ begin
   writeln();
   if (d mod 2) = 0 then
     gagneC := true;
-  if gagneC = false then
-    affichageTexte('InattenduEchec');
+  if gagneC = false then affichageTexte('InattenduEchec')
+    else
+    begin
+      writeln('appuyer sur entrer pour continuer');
+      read(a);
+    end;
 end;
 
 end.
