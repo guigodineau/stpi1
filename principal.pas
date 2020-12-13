@@ -113,8 +113,10 @@ var reponse : string;
 begin
 clrscr;
 affichageTexte( 'rattrapageB' );
-writeln( 'Voulez vous passer en deuxieme annee?' );
-readln( reponse );
+repeat
+  writeln( 'Voulez vous passer en deuxieme annee?' );
+  readln( reponse );
+until (reponse = 'oui') or (reponse = 'non');
 if reponse = 'oui' then validation := true;
 end;
 
@@ -134,7 +136,7 @@ begin
   readln(a);
   clrscr;
   scoreExamA( resultat, numEpRatee );
-  if resultat = 3 then reussite := true
+  if resultat = 3 then reussite := true;
   if resultat = 2 then rattrapageA( numEpRatee, validationA );
   if validationA then reussite := true;
   if reussite = false then
@@ -155,7 +157,8 @@ begin
   scoreExamB( resultat );
   if resultat = true then reussite:=true
     else rattrapageB( validation );
-  if validation then reussite := true;
+  if validation then reussite := true
+  else affichageTexte( 'rattrapageBEchec' );
   clrscr;
 end;
 
