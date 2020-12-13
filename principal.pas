@@ -131,6 +131,7 @@ begin
   affichageTexte( 'DSA' );
   writeln('appuyer entrer pour continuer');
   readln(a);
+  clrscr;
   scoreExamA( resultat, numEpRatee );
   if resultat = 3 then reussite := true
   else if resultat = 2 then rattrapageA( numEpRatee, validationA );
