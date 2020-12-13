@@ -126,6 +126,7 @@ var resultat, numEpRatee : Integer;
 begin
   clrscr;
   reussite := false;
+  validationA := false;
   resultat := 0;
   numEpRatee := 0;
   affichageTexte( 'DSA' );
@@ -134,7 +135,7 @@ begin
   clrscr;
   scoreExamA( resultat, numEpRatee );
   if resultat = 3 then reussite := true
-  else if resultat = 2 then rattrapageA( numEpRatee, validationA );
+  if resultat = 2 then rattrapageA( numEpRatee, validationA );
   if validationA then reussite := true;
   if reussite = false then
     begin
