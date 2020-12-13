@@ -156,7 +156,7 @@ begin
     else
     begin
       writeln('appuyer sur entrer pour continuer');
-      read(a);
+      readln(a);
     end;
 end;
 

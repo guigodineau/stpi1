@@ -122,12 +122,15 @@ end;
 procedure DSA(var reussite : boolean );
 var resultat, numEpRatee : Integer;
     validationA : boolean;
+    a : Char;
 begin
   clrscr;
   reussite := false;
   resultat := 0;
   numEpRatee := 0;
   affichageTexte( 'DSA' );
+  writeln('appuyer entrer pour continuer');
+  readln(a);
   scoreExamA( resultat, numEpRatee );
   if resultat = 3 then reussite := true
   else if resultat = 2 then rattrapageA( numEpRatee, validationA );
