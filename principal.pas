@@ -6,6 +6,7 @@ var evenement : Integer;
     scenario : array[0..Max] of Integer;
     i, j : Integer;
     a : char;
+    reponse : string;
 
 {choisi aléatoirement un scénario puis en charge les différents événements dans un tableau}
 procedure initialisation( var scenario : array of integer );
@@ -165,25 +166,32 @@ end;
 {programme principal, s'occupe de la gestion des événement et du déroulement de l'histoire en fonction de l'initialisation et des succés
 du joueur.}
 begin
-clrscr;
-initialisation( scenario );
-j := 0;
-i := scenario[j];
-affichageTexte( 'EntreeInsa' );
-writeln('appuyer entrer pour continuer');
-readln(a);
 repeat
-  reussite := false;
-  evenement := i;
-  case evenement of
-    1 : chifoumi( reussite );
-    2 : DSA( reussite );
-    3 : inattendu( reussite );
-    4 : DSB( reussite );
-  end;
-  if reussite=true then j:= j+1
-  else j:=0;
-  i:= scenario[j];
-until (j=0) or (j=4);
+  clrscr;
+  initialisation( scenario );
+  j := 0;
+  i := scenario[j];
+  affichageTexte( 'EntreeInsa' );
+  writeln('appuyer entrer pour continuer');
+  readln(a);
+  repeat
+    reussite := false;
+    evenement := i;
+    case evenement of
+      1 : chifoumi( reussite );
+      2 : DSA( reussite );
+      3 : inattendu( reussite );
+      4 : DSB( reussite );
+    end;
+    if reussite=true then j:= j+1
+    else j:=0;
+    i:= scenario[j];
+  until (j=4) or (j=0);
+  if j=0 then
+      repeat
+        writeln('voulez-vous retenter votre annee? ');
+        readln( reponse );
+      until (reponse = 'oui') or (reponse = 'non');
+until (j=4) or (reponse = 'non');
 if j=4 then affichageTexte('FinJeu');
 end.
