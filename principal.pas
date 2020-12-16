@@ -158,6 +158,7 @@ begin
   reussite := false;
   writeln('appuyer sur entrer pour continuer');
   readln(a);
+  clrscr;
   scoreExamB( resultat );
   if resultat = true then reussite:=true
     else rattrapageB( validation );
