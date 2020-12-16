@@ -148,13 +148,17 @@ begin
   affichageTexte('Inattendu');
   gagneC := false;
   d := random(6)+1;
-  writeln('le numero de ton de est : ', d);
+  writeln('appuyer sur entrer pour lancer votre de');
+  readln(a);
+  clrscr;
+  writeln('vous avez obtenu le numero : ', d);
   writeln();
   if (d mod 2) = 0 then
     gagneC := true;
   if gagneC = false then affichageTexte('InattenduEchec')
     else
     begin
+      writeln('Coup de bol votre numero est pair!');
       writeln('appuyer sur entrer pour continuer');
       readln(a);
     end;
