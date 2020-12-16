@@ -150,11 +150,14 @@ end;
 {Gère le fonctionnement du deuxième DS}
 procedure DSB(var reussite : boolean );
 var resultat, validation : boolean;
+    a : Char;
 begin
   clrscr;
   validation := false;
   affichageTexte( 'DSB' );
   reussite := false;
+  writeln('appuyer sur entrer pour continuer');
+  readln(a);
   scoreExamB( resultat );
   if resultat = true then reussite:=true
     else rattrapageB( validation );
@@ -172,7 +175,7 @@ repeat
   j := 0;
   i := scenario[j];
   affichageTexte( 'EntreeInsa' );
-  writeln('appuyer entrer pour continuer');
+  writeln('appuyer sur entrer pour continuer');
   readln(a);
   repeat
     reussite := false;
@@ -189,7 +192,7 @@ repeat
   until (j=4) or (j=0);
   if j=0 then
       repeat
-        writeln('voulez-vous retenter votre annee? ');
+        writeln('voulez-vous retenter votre annee? (oui ou non)');
         readln( reponse );
       until (reponse = 'oui') or (reponse = 'non');
 until (j=4) or (reponse = 'non');
